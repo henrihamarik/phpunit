@@ -6,16 +6,19 @@ use PHPUnit\Framework\TestCase;
 use TDD\Receipt;
 
 class ReceiptTest extends TestCase {
+	public function setUp() {
+		$this->Receipt = new Receipt();
+	}
+
+	public function tearDown() {
+		unset($this->Receipt);
+	}
 	public function testTotal() {
-		// loome reciepi objekti
-		$Receipt = new Receipt();
-		// php uniti testi meetod
+		$input = [0,2,5,8];
+		$output = $this->Receipt->total($input);
 		$this->assertEquals(
-			// oodatav väärtus
 			15,
-			// reaalne väärtus 
-			$Receipt->total([0,2,5,8]),
-			// vastus 
+			$output,
 			'When summing the total should equal 15'
 		);
 	}
